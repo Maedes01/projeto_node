@@ -7,8 +7,23 @@ const app = express()
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
 
-app.get('/', (req, res) => {
-    res.render('dashboard')
+app.get('/post', (req, res) => {
+    const post = {
+        title: "Aprender Node.Js", 
+        category: "JavaScript",
+        body: "Este artigo vai te ajudar a aprender Node.js",
+        comments: 4
+
+    }
+
+
+    res.render('post', { post })
+})
+
+app.get('/dashboard', (req, res) => {
+const itens = ['itens a', 'itens b', 'itens c']
+
+    res.render('dashboard', { itens })
 })
 
 app.get('/', (req, res) => {
